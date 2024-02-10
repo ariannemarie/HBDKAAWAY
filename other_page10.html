@@ -51,14 +51,15 @@
 
 <div class="container">
   <h1>Random Message from Me</h1>
-  <p>Hey there! Here's a random message just for you:</p>
+  <p>Hey there! Here's a message from me:</p>
   <p id="randomMessage">Loading...</p>
-  <button class="button" onclick="getRandomMessage()">Get Another Message</button>
+  <button class="button" onclick="getNextMessage()">Next Message</button>
 </div>
 
 <script>
   const messages = [
-    "You are stronger than you think!",
+  "Hello!",
+  "You are stronger than you think!",
     "Believe in yourself. You are capable of amazing things!",
     "Every day is a new opportunity. Seize it!",
     "Don't forget to smile today. You deserve happiness.",
@@ -117,17 +118,21 @@
     "You are loved and appreciated.",
     "You are not alone. Reach out if you need support.",
     "Embrace the journey of self-discovery. You are growing every day."
-
-
   ];
 
-  function getRandomMessage() {
-    const randomIndex = Math.floor(Math.random() * messages.length);
-    const randomMessage = messages[randomIndex];
-    document.getElementById("randomMessage").innerText = randomMessage;
+  let currentIndex = 0;
+
+  function displayCurrentMessage() {
+    document.getElementById("randomMessage").innerText = messages[currentIndex];
   }
-  
-  getRandomMessage(); // Display initial random message
+
+  function getNextMessage() {
+    currentIndex = (currentIndex + 1) % messages.length;
+    displayCurrentMessage();
+  }
+
+  // Display the initial message
+  displayCurrentMessage();
 </script>
 
 </body>
